@@ -1189,7 +1189,10 @@
   .info-note {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-3);
+    max-width: 720px;
+    margin: 0 auto;
     background: var(--color-white);
     border: 1px solid var(--color-gold);
     border-radius: 24px;
@@ -1197,7 +1200,7 @@
     box-shadow: var(--shadow-soft);
   }
   .info-note-icon {
-    width: 56px;
+    width: 40px;
     height: auto;
     flex-shrink: 0;
   }
@@ -1211,7 +1214,7 @@
   }
   @media (max-width: 560px) {
     .info-note { gap: var(--space-2); padding: var(--space-3); }
-    .info-note-icon { width: 44px; }
+    .info-note-icon { width: 32px; }
     .info-note-text { font-size: 14px; }
   }
 
