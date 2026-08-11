@@ -11,7 +11,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
 <style>
   /* ============================================================
@@ -54,6 +54,7 @@
     --font-display: 'Tangerine', cursive;
     --font-text: 'Cormorant Garamond', serif;
     --font-body: 'Velour', 'Cormorant Garamond', serif;
+    --font-content: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
     --space-1: 8px;
     --space-2: 16px;
@@ -89,7 +90,8 @@
 
   body {
     margin: 0;
-    font-family: var(--font-body);
+    font-family: var(--font-content);
+    font-weight: 400;
     font-size: clamp(17px, 4.5vw, 20px);
     line-height: 1.75;
     color: var(--color-ink);
@@ -190,6 +192,7 @@
 
   .lede {
     font-size: clamp(18px, 3vw, 21px);
+    font-weight: 400;
     color: var(--color-stone);
     font-style: italic;
   }
@@ -493,6 +496,7 @@
 
   .hero-date {
     font-size: 17px;
+    font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--color-gold-dark);
@@ -545,6 +549,7 @@
     display: block;
     margin-top: 4px;
     font-size: 14px;
+    font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--color-stone);
@@ -685,6 +690,7 @@
   }
   .venue-showcase-address {
     font-size: 17px;
+    font-weight: 400;
     color: var(--color-stone);
   }
 
@@ -997,6 +1003,7 @@
   }
 
   .hotel-card-name {
+    font-family: var(--font-body);
     font-size: 18px;
     font-weight: 700;
     color: var(--color-stone);
@@ -1006,16 +1013,18 @@
   .hotel-card-desc {
     color: var(--color-ink);
     font-size: 14px;
+    font-weight: 400;
     line-height: 1.5;
     margin-bottom: var(--space-2);
   }
 
   .hotel-card-contact {
     font-size: 13px;
+    font-weight: 500;
     color: var(--color-stone);
     margin-bottom: var(--space-2);
   }
-  .hotel-card-contact span { color: var(--color-gold-dark); font-weight: 500; }
+  .hotel-card-contact span { color: var(--color-gold-dark); font-weight: 600; }
 
   .contact-row {
     display: flex;
@@ -1151,6 +1160,7 @@
   .tips-slide-desc {
     margin-top: 4px;
     font-size: 14px;
+    font-weight: 400;
     color: var(--color-stone);
   }
   .tips-slide-desc:empty { display: none; }
@@ -1206,8 +1216,9 @@
     flex-shrink: 0;
   }
   .info-note-text {
-    font-family: var(--font-text);
-    font-size: 18px;
+    font-family: var(--font-content);
+    font-size: 16px;
+    font-weight: 500;
     line-height: 1.7;
     color: var(--color-gold-dark);
     text-align: left;
@@ -1229,13 +1240,14 @@
   }
   .gift-bank p {
     font-size: 15px;
+    font-weight: 400;
     color: var(--color-ink);
     line-height: 1.6;
     word-break: break-word;
   }
   .gift-bank p span {
     color: var(--color-stone);
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .gift-closing {
@@ -1279,6 +1291,7 @@
   }
   .footer-date {
     font-size: 15px;
+    font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--color-stone);
@@ -1287,6 +1300,7 @@
   .footer-message {
     margin-top: var(--space-3);
     font-style: italic;
+    font-weight: 400;
     color: var(--color-ink);
     font-size: clamp(15px, 4.4vw, 18px);
     max-width: 34ch;
