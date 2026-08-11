@@ -1088,7 +1088,7 @@
   .tips-slide {
     display: none;
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 50%;
     width: var(--tips-card-w);
     background: var(--color-white);
@@ -1102,20 +1102,20 @@
   .tips-slide.is-prev,
   .tips-slide.is-next { display: block; }
   .tips-slide.is-active {
-    transform: translateX(-50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
     filter: none;
     z-index: 2;
   }
   .tips-slide.is-prev {
-    transform: translateX(calc(-50% - var(--tips-card-w) * 0.4)) scale(0.86);
+    transform: translate(calc(-50% - var(--tips-card-w) * 0.4), -50%) scale(0.86);
     opacity: 0.55;
     filter: grayscale(70%);
     z-index: 1;
     pointer-events: none;
   }
   .tips-slide.is-next {
-    transform: translateX(calc(-50% + var(--tips-card-w) * 0.4)) scale(0.86);
+    transform: translate(calc(-50% + var(--tips-card-w) * 0.4), -50%) scale(0.86);
     opacity: 0.55;
     filter: grayscale(70%);
     z-index: 1;
@@ -1137,10 +1137,10 @@
     text-align: center;
   }
   .tips-slide-name {
-    font-family: var(--font-text);
-    font-weight: 600;
-    font-size: 17px;
-    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-stone);
   }
   .tips-slide-desc {
     margin-top: 4px;
@@ -1167,8 +1167,8 @@
     transition: background var(--t-med), color var(--t-med), border-color var(--t-med);
   }
   .tips-arrow:hover { background: var(--color-gold); border-color: var(--color-gold); color: var(--color-white); }
-  .tips-arrow--prev { left: 4px; }
-  .tips-arrow--next { right: 4px; }
+  .tips-arrow--prev { left: max(4px, calc(50% - var(--tips-card-w) / 2 - 56px)); }
+  .tips-arrow--next { right: max(4px, calc(50% - var(--tips-card-w) / 2 - 56px)); }
   .tips-counter {
     margin-top: var(--space-2);
     text-align: center;
@@ -1418,6 +1418,7 @@
   <section class="section section--alt" id="contagem">
     <div class="container">
       <div class="section-head reveal">
+        <img src="assets/geral/elementos/elemento-05.png" alt="" style="width:60px; height:auto; margin:0 auto var(--space-2);" />
         <span class="eyebrow">Contagem regressiva</span>
       </div>
       <div class="countdown-grid reveal">
@@ -1449,7 +1450,7 @@
         <h2 class="h2">Onde se hospedar</h2>
       </div>
       <div class="content-narrow reveal" style="text-align:center;">
-        <p class="lede">Por se tratar de pré-carnaval em Salvador, aconselhamos fazer reserva de hotel e passagens aéreas com antecedência. O trânsito pode estar modificado por conta das festas de pré-carnaval.</p>
+        <img src="assets/geral/informacao.png" alt="Informação" style="max-width:95%; height:auto; display:block; margin:0 auto;" />
       </div>
       <!-- EDITAR: substituir foto, nome, descrição, telefone, whatsapp e link de cada hotel -->
       <div class="hotel-grid">
@@ -1457,7 +1458,7 @@
           <img src="assets/hospedagem/foto-01.jpg" alt="Hotel Fasano Salvador" class="hotel-card-img" />
           <div class="hotel-card-body">
             <p class="hotel-card-name">Hotel Fasano Salvador</p>
-            <p class="hotel-card-desc">Sofisticação e elegância com vista para a Baía de Todos os Santos.</p>
+            <p class="hotel-card-desc">Localizado no Centro Histórico, próximo à Praça Castro Alves, Elevador Lacerda e Pelourinho.</p>
             <div class="hotel-card-contact">
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 2201-6300</div>
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/fasano/" target="_blank" rel="noopener">@fasano</a></div>
@@ -1469,7 +1470,7 @@
           <img src="assets/hospedagem/foto-02.jpg" alt="Fera Palace Hotel" class="hotel-card-img" />
           <div class="hotel-card-body">
             <p class="hotel-card-name">Fera Palace Hotel</p>
-            <p class="hotel-card-desc">No Centro Histórico, arquitetura, sofisticação e vista privilegiada.</p>
+            <p class="hotel-card-desc">Situado na Rua Chile, próximo à Praça Castro Alves, Mercado Modelo e Pelourinho.</p>
             <div class="hotel-card-contact">
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 3036-9202</div>
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/ferapalacehotel/" target="_blank" rel="noopener">@ferapalacehotel</a></div>
@@ -1481,7 +1482,7 @@
           <img src="assets/hospedagem/foto-03.jpg" alt="Villa Bahia" class="hotel-card-img" />
           <div class="hotel-card-body">
             <p class="hotel-card-name">Villa Bahia</p>
-            <p class="hotel-card-desc">No Pelourinho, casarões históricos com charme e atmosfera intimista.</p>
+            <p class="hotel-card-desc">Localizado no coração do Pelourinho, próximo a igrejas, restaurantes e atrações culturais.</p>
             <div class="hotel-card-contact">
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 3322-4271</div>
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/villabahia/" target="_blank" rel="noopener">@villabahia</a></div>
@@ -1493,7 +1494,7 @@
           <img src="assets/hospedagem/foto-04.jpg" alt="Aram Yamí Boutique Hotel" class="hotel-card-img" />
           <div class="hotel-card-body">
             <p class="hotel-card-name">Aram Yamí Boutique Hotel</p>
-            <p class="hotel-card-desc">Hotel boutique intimista com arquitetura histórica e vista para a baía.</p>
+            <p class="hotel-card-desc">Situado no Santo Antônio Além do Carmo, próximo ao Pelourinho e ao Centro Histórico.</p>
             <div class="hotel-card-contact">
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 3242-9412</div>
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/aramyamihotel/" target="_blank" rel="noopener">@aramyamihotel</a></div>
@@ -1505,7 +1506,7 @@
           <img src="assets/hospedagem/foto-05.jpg" alt="Hotel da Bahia by Wish" class="hotel-card-img" />
           <div class="hotel-card-body">
             <p class="hotel-card-name">Hotel da Bahia by Wish</p>
-            <p class="hotel-card-desc">Tradição, arte e conforto em localização privilegiada da cidade.</p>
+            <p class="hotel-card-desc">Localizado no Campo Grande, com fácil acesso à Barra, Vitória e Centro Histórico.</p>
             <div class="hotel-card-contact">
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 3021-6700</div>
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span>Reservas:</span> 0800 600 8088</div>
@@ -1518,7 +1519,7 @@
           <img src="assets/hospedagem/foto-06.jpg" alt="Sol Victoria Marina" class="hotel-card-img" />
           <div class="hotel-card-body">
             <p class="hotel-card-name">Sol Victoria Marina</p>
-            <p class="hotel-card-desc">No Corredor da Vitória, vista privilegiada para a baía.</p>
+            <p class="hotel-card-desc">Situado no Corredor da Vitória, próximo ao Campo Grande, Barra e à Baía de Todos os Santos.</p>
             <div class="hotel-card-contact">
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 3418-2155</div>
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/solvictoriamarina/" target="_blank" rel="noopener">@solvictoriamarina</a></div>
@@ -1530,7 +1531,7 @@
           <img src="assets/hospedagem/foto-07.jpg" alt="Mercure Salvador Rio Vermelho" class="hotel-card-img" />
           <div class="hotel-card-body">
             <p class="hotel-card-name">Mercure Salvador Rio Vermelho</p>
-            <p class="hotel-card-desc">À beira-mar no Rio Vermelho, conforto e vista para o mar.</p>
+            <p class="hotel-card-desc">Localizado no Rio Vermelho, próximo à Praia do Buracão, bares e restaurantes.</p>
             <div class="hotel-card-contact">
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 3172-9200</div>
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/mercureriovermelho/" target="_blank" rel="noopener">@mercureriovermelho</a></div>
@@ -1542,7 +1543,7 @@
           <img src="assets/hospedagem/foto-08.jpg" alt="ibis Salvador Rio Vermelho" class="hotel-card-img" />
           <div class="hotel-card-body">
             <p class="hotel-card-name">ibis Salvador Rio Vermelho</p>
-            <p class="hotel-card-desc">No Rio Vermelho, hospedagem prática e confortável perto da orla.</p>
+            <p class="hotel-card-desc">Situado no Rio Vermelho, próximo à orla, restaurantes e principais pontos do bairro.</p>
             <div class="hotel-card-contact">
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 3172-4100</div>
               <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/ibis.br/" target="_blank" rel="noopener">@ibis.br</a></div>
@@ -1558,8 +1559,9 @@
   <section class="section section--alt" id="dicas">
     <div class="container">
       <div class="section-head reveal">
+        <img src="assets/geral/elementos/elemento-06.png" alt="" style="width:60px; height:auto; margin:0 auto var(--space-2);" />
         <span class="eyebrow">Dicas</span>
-        <h2 class="h2">Dicas para o grande dia</h2>
+        <h2 class="h2" id="dicas-tab-title">Museus para conhecer</h2>
       </div>
 
       <div class="tips-tabs reveal">
@@ -1577,45 +1579,45 @@
 
             <div class="tips-carousel-track">
             <div class="tips-slide is-active">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/Museus/foto-01.jpg" alt="MUNCAB" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">MUNCAB</p>
-                <p class="tips-slide-desc">Museu Nacional da Cultura Afro-Brasileira</p>
+                <p class="tips-slide-desc">Centro Histórico.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/Museus/foto-02.jpg" alt="Cidade da Música da Bahia" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Cidade da Música da Bahia</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Comércio.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/Museus/foto-03.jpg" alt="MAM-BA" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">MAM-BA</p>
-                <p class="tips-slide-desc">Museu de Arte Moderna da Bahia</p>
+                <p class="tips-slide-desc">Solar do Unhão, Av. Contorno.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/Museus/foto-04.jpg" alt="Casa do Carnaval da Bahia" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Casa do Carnaval da Bahia</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Centro Histórico.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/Museus/foto-05.jpg" alt="Fundação Casa de Jorge Amado" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Fundação Casa de Jorge Amado</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Pelourinho.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/Museus/foto-06.jpg" alt="Museu da Cidade" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Museu da Cidade</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Pelourinho.</p>
               </div>
             </div>
             </div>
@@ -1631,80 +1633,80 @@
 
             <div class="tips-carousel-track">
             <div class="tips-slide is-active">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/restaurante/foto-01.jpg" alt="Casa de Tereza" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Casa de Tereza</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Rio Vermelho.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/restaurante/foto-02.jpeg" alt="Boteco do França" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Boteco do França</p>
-                <p class="tips-slide-desc">Sugestão: Arroz de Polvo</p>
+                <p class="tips-slide-desc">Rio Vermelho. Sugestão: Arroz de Polvo.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/restaurante/foto-03.jpg" alt="Acarajé da Dinha" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Acarajé da Dinha</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Rio Vermelho.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/restaurante/foto-04.jpg" alt="Acarajé da Cira" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Acarajé da Cira</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Rio Vermelho.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/restaurante/foto-05.jpg" alt="Preta Tirachapéu" /></div>
               <div class="tips-slide-body">
-                <p class="tips-slide-name">Restaurante da Preta</p>
-                <p class="tips-slide-desc">Palacete Tirachapéu</p>
+                <p class="tips-slide-name">Preta Tirachapéu</p>
+                <p class="tips-slide-desc">Centro Histórico.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/restaurante/foto-06.jpg" alt="PALA 7" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">PALA 7</p>
-                <p class="tips-slide-desc">Palacete Tirachapéu</p>
+                <p class="tips-slide-desc">Palacete Tirachapéu, Centro Histórico.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/restaurante/foto-07.jpg" alt="Origem" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Origem</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Caminho das Árvores.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/restaurante/foto-08.jpg" alt="Soho" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Soho</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Bahia Marina.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/restaurante/foto-09.jpg" alt="Chez Bernard" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Chez Bernard</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Dois de Julho.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/restaurante/foto-10.jpg" alt="Mistura Contorno" /></div>
               <div class="tips-slide-body">
-                <p class="tips-slide-name">Mistura</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-name">Mistura Contorno</p>
+                <p class="tips-slide-desc">Av. Contorno.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/restaurante/foto-11.jpg" alt="Companhia da Pizza" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Companhia da Pizza</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Rio Vermelho.</p>
               </div>
             </div>
             </div>
@@ -1720,38 +1722,38 @@
 
             <div class="tips-carousel-track">
             <div class="tips-slide is-active">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/praia/foto-01.jpg" alt="Porto da Barra" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Porto da Barra</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Barra.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/praia/foto-02.jpg" alt="Praia da Gamboa" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Praia da Gamboa</p>
-                <p class="tips-slide-desc">Mar geralmente mais tranquilo</p>
+                <p class="tips-slide-desc">Gamboa; mar mais tranquilo.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/praia/foto-03.jpg" alt="Praia do Buracão" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Praia do Buracão</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Rio Vermelho.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/praia/foto-04.jpg" alt="Praia do Flamengo" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Praia do Flamengo</p>
-                <p class="tips-slide-desc">Barraca do Lôro e Pipa Beach Club</p>
+                <p class="tips-slide-desc">Com Barraca do Lôro e Pipa Beach Club.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/praia/foto-05.jpg" alt="Stella Maris" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Stella Maris</p>
-                <p class="tips-slide-desc">Barraca do Lôro</p>
+                <p class="tips-slide-desc">Próxima à Praia do Flamengo.</p>
               </div>
             </div>
             </div>
@@ -1767,38 +1769,38 @@
 
             <div class="tips-carousel-track">
             <div class="tips-slide is-active">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/passeio/foto-01.jpg" alt="Praia do Forte" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Praia do Forte</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Mata de São João, Litoral Norte.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/passeio/foto-02.jpg" alt="Itacimirim" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Itacimirim</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Camaçari, Litoral Norte.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/passeio/foto-03.jpg" alt="Centro Histórico" /></div>
               <div class="tips-slide-body">
-                <p class="tips-slide-name">Centro Histórico de Salvador</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-name">Centro Histórico</p>
+                <p class="tips-slide-desc">Pelourinho.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/passeio/foto-04.jpg" alt="Ponta do Humaitá" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Ponta do Humaitá</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Monte Serrat.</p>
               </div>
             </div>
             <div class="tips-slide">
-              <div class="tips-slide-media"></div>
+              <div class="tips-slide-media"><img src="assets/geral/passeio/foto-05.jpg" alt="Basílica do Senhor do Bonfim" /></div>
               <div class="tips-slide-body">
                 <p class="tips-slide-name">Basílica do Senhor do Bonfim</p>
-                <p class="tips-slide-desc"></p>
+                <p class="tips-slide-desc">Bonfim.</p>
               </div>
             </div>
             </div>
@@ -1967,6 +1969,13 @@
 
   /* ---------- Dicas tabs ---------- */
   var tipsTabBtns = document.querySelectorAll('.tips-tab-btn');
+  var tipsTabTitle = document.getElementById('dicas-tab-title');
+  var tipsTabTitles = {
+    museus: 'Museus para conhecer',
+    restaurantes: 'Restaurantes para experimentar',
+    praias: 'Praias para visitar',
+    passeios: 'Passeios para aproveitar'
+  };
   tipsTabBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
       var target = btn.getAttribute('data-tab');
@@ -1980,6 +1989,9 @@
       btn.classList.add('is-active');
       btn.setAttribute('aria-selected', 'true');
       document.getElementById('tab-' + target).classList.add('is-active');
+      if (tipsTabTitle && tipsTabTitles[target]) {
+        tipsTabTitle.textContent = tipsTabTitles[target];
+      }
     });
   });
 
