@@ -1389,7 +1389,7 @@
         <span class="eyebrow">Nossa Trajetória</span>
       </div>
 
-      <img src="assets/geral/linha-do-tempo.png" alt="Nossa Trajetória" class="tl-full-img reveal" />
+      <img src="assets/geral/linha-do-tempo.png" alt="Nossa Trajetória" class="tl-full-img reveal" id="tl-full-img" style="cursor: zoom-in;" />
     </div>
   </section>
 
@@ -2093,6 +2093,9 @@
   function closeLightbox() {
     lightbox.classList.remove('is-open');
     document.body.style.overflow = '';
+    document.getElementById('lightbox-prev').style.display = '';
+    document.getElementById('lightbox-next').style.display = '';
+    lightboxCounter.style.display = '';
   }
   function updateLightbox() {
     var file = galleryFiles[currentIndex];
@@ -2106,6 +2109,19 @@
   document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
   document.getElementById('lightbox-next').addEventListener('click', nextImage);
   document.getElementById('lightbox-prev').addEventListener('click', prevImage);
+
+  var tlFullImg = document.getElementById('tl-full-img');
+  if (tlFullImg) {
+    tlFullImg.addEventListener('click', function () {
+      document.getElementById('lightbox-prev').style.display = 'none';
+      document.getElementById('lightbox-next').style.display = 'none';
+      lightboxCounter.style.display = 'none';
+      lightboxImg.src = tlFullImg.src;
+      lightboxImg.alt = tlFullImg.alt;
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    });
+  }
   lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', function (e) {
     if (!lightbox.classList.contains('is-open')) return;
