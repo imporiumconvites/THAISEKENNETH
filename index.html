@@ -198,6 +198,19 @@
 
   .section--alt { background-color: var(--color-white); }
 
+  #hospedagem { position: relative; overflow: hidden; }
+  #hospedagem::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/geral/estampa.png');
+    background-size: 420px 420px;
+    background-repeat: repeat;
+    opacity: 0.2;
+    pointer-events: none;
+  }
+  #hospedagem > .container { position: relative; z-index: 1; }
+
   .section-head {
     text-align: center;
     max-width: 620px;
@@ -953,7 +966,7 @@
 
   .hotel-card {
     background: var(--color-white);
-    border: 1px solid var(--color-line);
+    border: 1px solid var(--color-champagne);
     border-radius: var(--radius-card);
     overflow: hidden;
     display: flex;
@@ -1059,17 +1072,114 @@
   }
   .tips-tab-panel { display: none; }
   .tips-tab-panel.is-active { display: block; }
-  .tips-list {
-    list-style: none;
+
+  .tips-carousel {
+    --tips-card-w: clamp(280px, 92vw, 480px);
+    position: relative;
+    width: 100vw;
+    max-width: 1400px;
+    margin: 0 calc(50% - 50vw);
+  }
+  .tips-carousel-track {
+    position: relative;
+    height: 540px;
+    overflow: hidden;
+  }
+  .tips-slide {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: var(--tips-card-w);
+    background: var(--color-white);
+    border: 1px solid var(--color-champagne);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: transform var(--t-med), opacity var(--t-med), filter var(--t-med);
+  }
+  .tips-slide.is-active,
+  .tips-slide.is-prev,
+  .tips-slide.is-next { display: block; }
+  .tips-slide.is-active {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    filter: none;
+    z-index: 2;
+  }
+  .tips-slide.is-prev {
+    transform: translateX(calc(-50% - var(--tips-card-w) * 0.4)) scale(0.86);
+    opacity: 0.55;
+    filter: grayscale(70%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .tips-slide.is-next {
+    transform: translateX(calc(-50% + var(--tips-card-w) * 0.4)) scale(0.86);
+    opacity: 0.55;
+    filter: grayscale(70%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .tips-slide-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, var(--color-champagne), var(--color-off-white));
+  }
+  .tips-slide-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .tips-slide-body {
+    padding: var(--space-2) var(--space-2) var(--space-3);
     text-align: center;
   }
-  .tips-list li {
-    font-size: 16px;
+  .tips-slide-name {
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 17px;
     color: var(--color-ink);
-    padding: 12px 0;
-    border-bottom: 1px solid var(--color-line);
   }
-  .tips-list li:last-child { border-bottom: none; }
+  .tips-slide-desc {
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--color-stone);
+  }
+  .tips-slide-desc:empty { display: none; }
+  .tips-arrow {
+    position: absolute;
+    top: calc(50% - 44px);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-white);
+    border: 1px solid var(--color-line);
+    color: var(--color-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: var(--shadow-soft);
+    z-index: 3;
+    transition: background var(--t-med), color var(--t-med), border-color var(--t-med);
+  }
+  .tips-arrow:hover { background: var(--color-gold); border-color: var(--color-gold); color: var(--color-white); }
+  .tips-arrow--prev { left: 4px; }
+  .tips-arrow--next { right: 4px; }
+  .tips-counter {
+    margin-top: var(--space-2);
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--color-stone);
+  }
+  @media (max-width: 560px) {
+    .tips-carousel-track { height: 460px; }
+    .tips-arrow { width: 34px; height: 34px; font-size: 17px; top: calc(50% - 38px); }
+  }
 
   .gift-bank {
     margin-top: var(--space-3);
@@ -1461,50 +1571,240 @@
         </div>
 
         <div class="tips-tab-panel is-active" id="tab-museus" role="tabpanel">
-          <ul class="tips-list">
-            <li>MUNCAB – Museu Nacional da Cultura Afro-Brasileira</li>
-            <li>Cidade da Música da Bahia</li>
-            <li>MAM-BA – Museu de Arte Moderna da Bahia</li>
-            <li>Casa do Carnaval da Bahia</li>
-            <li>Fundação Casa de Jorge Amado</li>
-            <li>Museu da Cidade</li>
-          </ul>
+          <div class="tips-carousel">
+            <button type="button" class="tips-arrow tips-arrow--prev" aria-label="Anterior">&#8249;</button>
+            <button type="button" class="tips-arrow tips-arrow--next" aria-label="Próximo">&#8250;</button>
+
+            <div class="tips-carousel-track">
+            <div class="tips-slide is-active">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">MUNCAB</p>
+                <p class="tips-slide-desc">Museu Nacional da Cultura Afro-Brasileira</p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Cidade da Música da Bahia</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">MAM-BA</p>
+                <p class="tips-slide-desc">Museu de Arte Moderna da Bahia</p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Casa do Carnaval da Bahia</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Fundação Casa de Jorge Amado</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Museu da Cidade</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            </div>
+
+            <p class="tips-counter"><span class="tips-counter-current">1</span> / <span class="tips-counter-total">6</span></p>
+          </div>
         </div>
 
         <div class="tips-tab-panel" id="tab-restaurantes" role="tabpanel">
-          <ul class="tips-list">
-            <li>Casa de Tereza</li>
-            <li>Boteco do França – sugestão: Arroz de Polvo</li>
-            <li>Acarajé da Dinha</li>
-            <li>Acarajé da Cira</li>
-            <li>Restaurante da Preta – Palacete Tirachapéu</li>
-            <li>PALA 7 – Palacete Tirachapéu</li>
-            <li>Origem</li>
-            <li>Soho</li>
-            <li>Chez Bernard</li>
-            <li>Mistura</li>
-            <li>Companhia da Pizza</li>
-          </ul>
+          <div class="tips-carousel">
+            <button type="button" class="tips-arrow tips-arrow--prev" aria-label="Anterior">&#8249;</button>
+            <button type="button" class="tips-arrow tips-arrow--next" aria-label="Próximo">&#8250;</button>
+
+            <div class="tips-carousel-track">
+            <div class="tips-slide is-active">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Casa de Tereza</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Boteco do França</p>
+                <p class="tips-slide-desc">Sugestão: Arroz de Polvo</p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Acarajé da Dinha</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Acarajé da Cira</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Restaurante da Preta</p>
+                <p class="tips-slide-desc">Palacete Tirachapéu</p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">PALA 7</p>
+                <p class="tips-slide-desc">Palacete Tirachapéu</p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Origem</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Soho</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Chez Bernard</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Mistura</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Companhia da Pizza</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            </div>
+
+            <p class="tips-counter"><span class="tips-counter-current">1</span> / <span class="tips-counter-total">11</span></p>
+          </div>
         </div>
 
         <div class="tips-tab-panel" id="tab-praias" role="tabpanel">
-          <ul class="tips-list">
-            <li>Porto da Barra</li>
-            <li>Praia da Gamboa – mar geralmente mais tranquilo</li>
-            <li>Praia do Buracão</li>
-            <li>Praia do Flamengo – Barraca do Lôro e Pipa Beach Club</li>
-            <li>Stella Maris – Barraca do Lôro</li>
-          </ul>
+          <div class="tips-carousel">
+            <button type="button" class="tips-arrow tips-arrow--prev" aria-label="Anterior">&#8249;</button>
+            <button type="button" class="tips-arrow tips-arrow--next" aria-label="Próximo">&#8250;</button>
+
+            <div class="tips-carousel-track">
+            <div class="tips-slide is-active">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Porto da Barra</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Praia da Gamboa</p>
+                <p class="tips-slide-desc">Mar geralmente mais tranquilo</p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Praia do Buracão</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Praia do Flamengo</p>
+                <p class="tips-slide-desc">Barraca do Lôro e Pipa Beach Club</p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Stella Maris</p>
+                <p class="tips-slide-desc">Barraca do Lôro</p>
+              </div>
+            </div>
+            </div>
+
+            <p class="tips-counter"><span class="tips-counter-current">1</span> / <span class="tips-counter-total">5</span></p>
+          </div>
         </div>
 
         <div class="tips-tab-panel" id="tab-passeios" role="tabpanel">
-          <ul class="tips-list">
-            <li>Praia do Forte</li>
-            <li>Itacimirim</li>
-            <li>Centro Histórico de Salvador</li>
-            <li>Ponta do Humaitá</li>
-            <li>Basílica do Senhor do Bonfim</li>
-          </ul>
+          <div class="tips-carousel">
+            <button type="button" class="tips-arrow tips-arrow--prev" aria-label="Anterior">&#8249;</button>
+            <button type="button" class="tips-arrow tips-arrow--next" aria-label="Próximo">&#8250;</button>
+
+            <div class="tips-carousel-track">
+            <div class="tips-slide is-active">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Praia do Forte</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Itacimirim</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Centro Histórico de Salvador</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Ponta do Humaitá</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            <div class="tips-slide">
+              <div class="tips-slide-media"></div>
+              <div class="tips-slide-body">
+                <p class="tips-slide-name">Basílica do Senhor do Bonfim</p>
+                <p class="tips-slide-desc"></p>
+              </div>
+            </div>
+            </div>
+
+            <p class="tips-counter"><span class="tips-counter-current">1</span> / <span class="tips-counter-total">5</span></p>
+          </div>
         </div>
       </div>
     </div>
@@ -1683,6 +1983,34 @@
     });
   });
 
+  /* ---------- Dicas carousels ---------- */
+  document.querySelectorAll('.tips-carousel').forEach(function (carousel) {
+    var slides = carousel.querySelectorAll('.tips-slide');
+    var counterCurrent = carousel.querySelector('.tips-counter-current');
+    var index = 0;
+    var render = function () {
+      slides.forEach(function (slide, i) {
+        slide.classList.remove('is-active', 'is-prev', 'is-next');
+        if (i === index) {
+          slide.classList.add('is-active');
+        } else if (i === (index - 1 + slides.length) % slides.length) {
+          slide.classList.add('is-prev');
+        } else if (i === (index + 1) % slides.length) {
+          slide.classList.add('is-next');
+        }
+      });
+      if (counterCurrent) counterCurrent.textContent = index + 1;
+    };
+    var show = function (newIndex) {
+      index = (newIndex + slides.length) % slides.length;
+      render();
+    };
+    var prevBtn = carousel.querySelector('.tips-arrow--prev');
+    var nextBtn = carousel.querySelector('.tips-arrow--next');
+    if (prevBtn) prevBtn.addEventListener('click', function () { show(index - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { show(index + 1); });
+    render();
+  });
 
   /* ---------- Gallery + Lightbox ---------- */
   var defaultGallery = [
