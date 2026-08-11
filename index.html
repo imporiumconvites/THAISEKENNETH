@@ -1186,6 +1186,35 @@
     .tips-arrow { width: 34px; height: 34px; font-size: 17px; top: calc(50% - 38px); }
   }
 
+  .info-note {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    background: var(--color-white);
+    border: 1px solid var(--color-gold);
+    border-radius: 24px;
+    padding: var(--space-3) var(--space-4);
+    box-shadow: var(--shadow-soft);
+  }
+  .info-note-icon {
+    width: 56px;
+    height: auto;
+    flex-shrink: 0;
+  }
+  .info-note-text {
+    font-family: var(--font-text);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-gold-dark);
+    text-align: left;
+    margin: 0;
+  }
+  @media (max-width: 560px) {
+    .info-note { gap: var(--space-2); padding: var(--space-3); }
+    .info-note-icon { width: 44px; }
+    .info-note-text { font-size: 14px; }
+  }
+
   .gift-bank {
     margin-top: var(--space-3);
     background: var(--color-off-white);
@@ -1725,8 +1754,11 @@
         <span class="eyebrow">Hospedagem</span>
         <h2 class="h2">Onde se hospedar</h2>
       </div>
-      <div class="content-narrow reveal" style="text-align:center;">
-        <img src="assets/geral/informacao.png" alt="Informação" style="max-width:95%; height:auto; display:block; margin:0 auto;" />
+      <div class="content-narrow reveal">
+        <div class="info-note">
+          <img src="assets/icones/icone-mascara.png" alt="" class="info-note-icon" />
+          <p class="info-note-text">Por se tratar de pré-carnaval em Salvador, aconselhamos fazer reserva de hotel e passagens aéreas com antecedência. O trânsito pode estar modificado por conta das festas de pré-carnaval.</p>
+        </div>
       </div>
       <!-- EDITAR: substituir foto, nome, descrição, telefone, whatsapp e link de cada hotel -->
       <div class="hotel-grid">
