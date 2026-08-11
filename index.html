@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Niuslene & Ricardo — Casamento em 26 de setembro de 2026, Villa Cheberle, Lauro de Freitas/BA." />
+<meta name="description" content="Thais & Kenneth — Casamento em 30 de janeiro de 2027, Casa Baluarte, Salvador/BA." />
 <meta name="theme-color" content="#f4efe7" />
-<title>Niuslene &amp; Ricardo</title>
+<title>Thais &amp; Kenneth</title>
 <link rel="icon" href="assets/geral/favicon.png" type="image/png" />
 <link rel="apple-touch-icon" href="assets/geral/favicon.png" />
 
@@ -43,8 +43,8 @@
 
     --color-sage: #818159;
     --color-sage-dark: #676032;
-    --color-gold: #b69b58;
-    --color-gold-dark: #97814a;
+    --color-gold: #946934;
+    --color-gold-dark: #946934;
     --color-champagne: #d1b995;
 
     --color-ink: #6a675f;
@@ -217,6 +217,110 @@
     width: 72px;
     height: auto;
     margin: 0 auto var(--space-3);
+  }
+
+  /* ============================================================
+     LINHA DO TEMPO
+     ============================================================ */
+  .timeline-section { overflow: hidden; }
+  .tl-track {
+    position: relative;
+    max-width: 820px;
+    margin: var(--space-5) auto 0;
+    padding: 0 0 var(--space-3);
+  }
+  .tl-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    background: var(--color-line);
+    transform: translateX(-50%);
+  }
+  .tl-plane {
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    width: 56px;
+    height: 56px;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: none;
+    transition: top 0.15s linear;
+  }
+  .tl-plane img { width: 100%; height: 100%; object-fit: contain; }
+  .tl-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: var(--color-gold);
+    transition: height 0.15s linear;
+  }
+  .tl-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 260px) 40px minmax(0, 260px);
+    align-items: start;
+    justify-content: center;
+    column-gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+  .tl-item:last-child { margin-bottom: 0; }
+  .tl-dot {
+    grid-column: 2;
+    justify-self: center;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-white);
+    border: 2px solid var(--color-champagne);
+    margin-top: 6px;
+    transition: background var(--t-med), border-color var(--t-med);
+    z-index: 1;
+  }
+  .tl-dot.is-passed {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+  }
+  .tl-content {
+    text-align: center;
+    opacity: 0;
+    transition: opacity var(--t-slow);
+  }
+  .tl-item--left .tl-content { grid-column: 1; justify-self: end; }
+  .tl-item--right .tl-content { grid-column: 3; justify-self: start; }
+  .tl-item.is-visible .tl-content { opacity: 1; }
+  .tl-img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto -8px;
+    display: block;
+  }
+  .tl-name {
+    font-family: var(--font-text);
+    font-style: italic;
+    font-size: 21px;
+    color: var(--color-ink);
+  }
+  @media (max-width: 620px) {
+    .tl-line { left: 20px; }
+    .tl-plane { left: 20px; }
+    .tl-item {
+      grid-template-columns: 40px 1fr;
+      margin-bottom: var(--space-5);
+    }
+    .tl-dot { grid-column: 1; margin-top: 6px; }
+    .tl-item--left .tl-content,
+    .tl-item--right .tl-content {
+      grid-column: 2;
+      justify-self: start;
+      text-align: left;
+    }
+    .tl-img { margin: 0 0 -8px; }
   }
 
   /* ============================================================
@@ -452,6 +556,16 @@
     margin: 0 auto var(--space-3);
   }
 
+  .hero-assinatura-text {
+    display: block;
+    font-family: 'Tangier', var(--font-display);
+    font-weight: 400;
+    font-size: clamp(42px, 9vw, 84px);
+    line-height: 1.1;
+    color: var(--color-gold-dark);
+    margin: 0 auto var(--space-3);
+  }
+
   .hero-date {
     font-size: 17px;
     letter-spacing: 3px;
@@ -471,44 +585,6 @@
     max-width: 560px;
     margin: var(--space-5) auto 0;
     font-size: clamp(15px, 2.4vw, 18px);
-  }
-
-  /* ============================================================
-     COUNTDOWN
-     ============================================================ */
-  .countdown-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-2);
-    max-width: 560px;
-    margin: 0 auto;
-  }
-  @media (min-width: 480px) {
-    .countdown-grid { gap: var(--space-3); }
-  }
-
-  .countdown-cell {
-    text-align: center;
-    padding: var(--space-3) var(--space-1);
-    border-top: 1px solid var(--color-line);
-    border-bottom: 1px solid var(--color-line);
-  }
-
-  .countdown-num {
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: clamp(38px, 7vw, 56px);
-    color: var(--color-gold-dark);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .countdown-label {
-    display: block;
-    margin-top: 4px;
-    font-size: 14px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--color-stone);
   }
 
   /* ============================================================
@@ -602,6 +678,37 @@
     height: auto;
     margin: 0 auto;
   }
+  .venue-showcase-fade {
+    position: relative;
+    width: clamp(260px, 44vw, 480px);
+    margin: 0 auto;
+  }
+  .venue-showcase-fade img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 1.8s ease;
+  }
+  .venue-showcase-fade img.is-active { opacity: 1; }
+  .venue-showcase-placeholder {
+    width: clamp(340px, 58vw, 640px);
+    aspect-ratio: 4 / 3;
+    margin: 0 auto;
+    border: 1px dashed var(--color-champagne);
+    border-radius: var(--radius-card);
+    background: var(--color-off-white);
+  }
+  .venue-showcase-details {
+    margin-top: var(--space-3);
+  }
+  .venue-showcase-details p {
+    font-size: 17px;
+    color: var(--color-stone);
+    margin-bottom: 4px;
+  }
+  .venue-showcase-details span { color: var(--color-gold-dark); font-weight: 500; }
   .venue-showcase-name { margin-top: -8px; }
   .venue-showcase-img--below {
     margin: var(--space-4) auto 0;
@@ -883,8 +990,141 @@
   .gift-card h3 { margin-bottom: var(--space-1); }
   .gift-card > p { color: var(--color-stone); font-size: 17px; }
 
+  /* ============================================================
+     HOSPEDAGEM — CARDS DE HOTÉIS
+     ============================================================ */
+  .hotel-grid {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: 1fr;
+    margin-top: var(--space-5);
+  }
+  @media (min-width: 620px) {
+    .hotel-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) {
+    .hotel-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .hotel-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: left;
+    transition: transform var(--t-med), box-shadow var(--t-med);
+  }
+  .hotel-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+
+  .hotel-card-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background: var(--color-off-white);
+  }
+
+  .hotel-card-body {
+    padding: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .hotel-card-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-stone);
+    margin-bottom: 6px;
+  }
+
+  .hotel-card-desc {
+    color: var(--color-ink);
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: var(--space-2);
+  }
+
+  .hotel-card-contact {
+    font-size: 13px;
+    color: var(--color-stone);
+    margin-bottom: var(--space-2);
+  }
+  .hotel-card-contact span { color: var(--color-gold-dark); font-weight: 500; }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .contact-row:last-child { margin-bottom: 0; }
+  .contact-row svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: var(--color-gold-dark);
+  }
+  .contact-row a { color: var(--color-stone); }
+
+  .hotel-card-body .btn {
+    margin-top: auto;
+    align-self: center;
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+
   .gift-card-foot { margin-top: auto; padding-top: var(--space-4); width: 100%; }
   .gift-card-foot .btn { width: 100%; }
+
+  /* ============================================================
+     DICAS — TABS
+     ============================================================ */
+  .tips-tabs {
+    max-width: 640px;
+    margin: var(--space-5) auto 0;
+  }
+  .tips-tab-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: var(--space-4);
+  }
+  .tips-tab-btn {
+    font-family: inherit;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-stone);
+    background: var(--color-white);
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background var(--t-med), color var(--t-med), border-color var(--t-med);
+  }
+  .tips-tab-btn:hover { border-color: var(--color-gold); color: var(--color-gold-dark); }
+  .tips-tab-btn.is-active {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: var(--color-white);
+  }
+  .tips-tab-panel { display: none; }
+  .tips-tab-panel.is-active { display: block; }
+  .tips-list {
+    list-style: none;
+    text-align: center;
+  }
+  .tips-list li {
+    font-size: 16px;
+    color: var(--color-ink);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .tips-list li:last-child { border-bottom: none; }
 
   .gift-bank {
     margin-top: var(--space-3);
@@ -932,6 +1172,16 @@
   .footer-assinatura {
     width: clamp(180px, 30vw, 260px);
     height: auto;
+    margin: 0 auto;
+  }
+
+  .footer-assinatura-text {
+    display: block;
+    font-family: 'Tangier', var(--font-display);
+    font-weight: 400;
+    font-size: clamp(28px, 6vw, 44px);
+    line-height: 1.1;
+    color: var(--color-gold-dark);
     margin: 0 auto;
   }
   .footer-date {
@@ -1019,11 +1269,6 @@
     .hero { min-height: auto; align-items: flex-start; padding-top: calc(var(--header-h) + var(--space-2)); padding-bottom: var(--space-6); }
     .hero-brasao { width: clamp(140px, 40vw, 180px); }
 
-    /* Contagem: 4 colunas na horizontal, números menores para caber */
-    .countdown-num { font-size: clamp(24px, 8.5vw, 40px); }
-    .countdown-cell { padding: var(--space-2) 2px; }
-    .countdown-label { font-size: 11px; letter-spacing: 0.5px; }
-
     /* Data da capa em uma única linha */
     .hero-date { font-size: clamp(11px, 3.5vw, 15px); letter-spacing: 1.5px; white-space: nowrap; }
   }
@@ -1037,13 +1282,10 @@
     <nav aria-label="Navegação principal">
       <ul class="nav-desktop">
         <li><a href="#home">Home</a></li>
-        <li><a href="#local">Local da Cerimônia</a></li>
-        <li><a href="#historia">Nossa História</a></li>
-        <li><a href="#rsvp">Confirmar Presença</a></li>
-        <li><a href="#galeria">Galeria</a></li>
-        <li><a href="#traje">Dress Code</a></li>
-        <li><a href="#presentes">Presentes</a></li>
-        <li><a href="#informacoes">Informações Importantes</a></li>
+        <li><a href="#local">Local</a></li>
+        <li><a href="#hospedagem">Hospedagem</a></li>
+        <li><a href="#galeria">Fotos</a></li>
+        <li><a href="#dicas">Dicas</a></li>
       </ul>
     </nav>
 
@@ -1061,13 +1303,10 @@
   </button>
   <ul class="nav-mobile">
     <li><a href="#home">Home</a></li>
-    <li><a href="#local">Local da Cerimônia</a></li>
-    <li><a href="#historia">Nossa História</a></li>
-    <li><a href="#rsvp">Confirmar Presença</a></li>
-    <li><a href="#galeria">Galeria</a></li>
-    <li><a href="#traje">Dress Code</a></li>
-    <li><a href="#presentes">Presentes</a></li>
-    <li><a href="#informacoes">Informações Importantes</a></li>
+    <li><a href="#local">Local</a></li>
+    <li><a href="#hospedagem">Hospedagem</a></li>
+    <li><a href="#galeria">Fotos</a></li>
+    <li><a href="#dicas">Dicas</a></li>
   </ul>
 </div>
 
@@ -1076,89 +1315,257 @@
   <!-- ============ HOME / CAPA ============ -->
   <section class="hero" id="home">
     <div class="hero-content">
-      <img src="assets/geral/brasao.png" alt="" aria-hidden="true" class="hero-brasao" />
-      <h1><img src="assets/geral/assinatura.png" alt="Niuslene e Ricardo" class="hero-assinatura" /></h1>
-      <p class="hero-date">26 de setembro de 2026 &ndash; 15h30</p>
+      <img src="assets/geral/Monograma.png" alt="" aria-hidden="true" class="hero-brasao" />
+      <h1><span class="hero-assinatura-text">Thais e Kenneth</span></h1>
+      <p class="hero-date">30 de janeiro de 2027 &ndash; 17h</p>
       <p class="hero-welcome lede">Criamos este espaço para compartilhar com vocês os detalhes do nosso grande dia. Aqui reunimos um pouco da nossa história, as informações da celebração e tudo o que preparamos com carinho para receber cada um de vocês.</p>
     </div>
   </section>
 
+  <!-- ============ LINHA DO TEMPO ============ -->
+  <section class="section section--alt timeline-section" id="linha-do-tempo">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Nossa jornada</span>
+        <h2 class="h2">Linha do Tempo</h2>
+      </div>
+
+      <div class="tl-track" id="tl-track">
+        <div class="tl-line"><div class="tl-fill" id="tl-fill"></div></div>
+          <div class="tl-plane" id="tl-plane"><img src="assets/geral/elementos/Elemento-07.png" alt="" /></div>
+
+        <div class="tl-item tl-item--left">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <img src="assets/geral/elementos/elemento-01.png" alt="Elevador Lacerda" class="tl-img" />
+            <p class="tl-name">Elevador Lacerda, Salvador/BA</p>
+          </div>
+        </div>
+
+        <div class="tl-item tl-item--right">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <img src="assets/geral/elementos/elemento-02.png" alt="Igrejinha da Pampulha" class="tl-img" />
+            <p class="tl-name">Igrejinha da Pampulha, Belo Horizonte/MG</p>
+          </div>
+        </div>
+
+        <div class="tl-item tl-item--left">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <img src="assets/geral/elementos/elemento-03.png" alt="Praia do Caranguejo" class="tl-img" />
+            <p class="tl-name">Praia do Caranguejo, Fortaleza/CE</p>
+          </div>
+        </div>
+
+        <div class="tl-item tl-item--right">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <img src="assets/geral/elementos/elemento-04.png" alt="Ponte Estaiada" class="tl-img" />
+            <p class="tl-name">Ponte Estaiada, São Paulo/SP</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ============ LOCAL DA CERIMÔNIA ============ -->
-  <section class="section section--alt" id="local">
+  <section class="section" id="local">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Local da cerimônia</span>
       </div>
 
       <div class="venue-showcase reveal">
-        <img src="assets/geral/aquarela-villa.png" alt="Ilustração em aquarela da Villa Cheberle" class="venue-showcase-img" />
-        <p class="venue-showcase-name">Villa Cheberle</p>
-        <p class="venue-showcase-address">Rua 15 de Janeiro, 431, Recreio Ipitanga, Lauro de Freitas/BA</p>
+        <div class="venue-showcase-fade">
+          <img src="assets/geral/baluarte-01.png" alt="Casa Baluarte" class="is-active" />
+        </div>
+        <p class="venue-showcase-name">Casa Baluarte</p>
+        <p class="venue-showcase-address">Ladeira do Baluarte, 20 - Santo Antônio Além do Carmo, Salvador – BA</p>
       </div>
 
       <div class="btn-row reveal">
-        <!-- EDITAR: link do Google Maps já aponta para o endereço informado; ajustar se necessário -->
-        <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Rua+15+de+Janeiro%2C+431%2C+Recreio+Ipitanga%2C+Lauro+de+Freitas%2FBA" target="_blank" rel="noopener">Como chegar</a>
+        <a class="btn btn-primary" href="https://maps.app.goo.gl/jokdXy4eKpK6pVeJ8" target="_blank" rel="noopener">Como chegar</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ CONTAGEM REGRESSIVA ============ -->
-  <section class="section" id="contagem">
+  <!-- ============ HOSPEDAGEM ============ -->
+  <section class="section section--alt" id="hospedagem">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">Contagem regressiva</span>
+        <span class="eyebrow">Hospedagem</span>
+        <h2 class="h2">Onde se hospedar</h2>
       </div>
-      <div class="countdown-grid reveal">
-        <div class="countdown-cell">
-          <span class="countdown-num" id="cd-days">00</span>
-          <span class="countdown-label">Dias</span>
-        </div>
-        <div class="countdown-cell">
-          <span class="countdown-num" id="cd-hours">00</span>
-          <span class="countdown-label">Horas</span>
-        </div>
-        <div class="countdown-cell">
-          <span class="countdown-num" id="cd-minutes">00</span>
-          <span class="countdown-label">Minutos</span>
-        </div>
-        <div class="countdown-cell">
-          <span class="countdown-num" id="cd-seconds">00</span>
-          <span class="countdown-label">Segundos</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ NOSSA HISTÓRIA ============ -->
-  <section class="section section--alt" id="historia">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Nossa história</span>
-      </div>
-
-      <div class="content-narrow story-text reveal">
-        <img src="assets/geral/floral-calla.png" alt="Ilustração de copo-de-leite, elemento da identidade visual" class="story-floral" loading="lazy" />
-        <p>Quem nos vê hoje, prontos para dar o passo mais importante das nossas vidas, talvez não imagine que tudo começou de forma despretensiosa, nos corredores do IFBA. Ali, entre cadernos e conversas de estudantes, uma sintonia imediata nasceu. Mas foi ao descobrirmos que compartilhávamos da mesma fé que entendemos que o encontro não era um mero acaso: era propósito.</p>
-        <p>Começamos a nossa história com o coração cheio de sonhos e construímos cada pequeno degrau do zero, com o nosso suor e muita renúncia. Olhando para trás, o maior orgulho é lembrar que o alicerce foi feito de simplicidade. Naquela época, o nosso maior tesouro era apenas a companhia um do outro e a certeza de que nenhum caminho seria difícil demais se fôssemos juntos.</p>
-        <p>Vibramos e crescemos com cada passo dado: as conquistas nos estudos, os primeiros passos na carreira e os obstáculos que superamos para construir quem somos hoje. Fomos, desde o início, os maiores incentivadores um do outro, dividindo rotinas, desafios e um amadurecimento que só o tempo — com paciência e amor — é capaz de lapidar.</p>
-        <p>A nossa caminhada com Deus também viveu suas estações, mas o Senhor sempre foi o nosso farol, nos sustentando com Sua fidelidade. Cada conquista carrega a marca da nossa persistência, o apoio incansável de quem esteve conosco desde o primeiro dia torcendo por nós, e as bênçãos eternas daqueles familiares que, mesmo na memória, continuam aquecendo o nosso coração.</p>
-        <p>Descobrimos que o amor verdadeiro não é um sentimento estático, mas a decisão de escolher estar junto todos os dias. Aprendemos a proteger o nosso “nós”, a respeitar quem somos individualmente e a nos orgulhar da nossa evolução. Hoje, o peito transborda de gratidão a Deus por ter cuidado de cada detalhe da nossa história.</p>
-        <p>Por fim, guardamos no coração a certeza de que tudo tem o seu tempo determinado por Deus. Entendemos que os anos vividos, a espera e os aprendizados foram o caminho necessário para nos preparar para o agora, no momento exato em que o Senhor alinhou as nossas vidas com o propósito d’Ele. Estamos prontos, com o coração vibrando de alegria, para iniciar o capítulo mais lindo da nossa vida e celebrar esse amor ao lado de vocês!</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CONFIRMAÇÃO DE PRESENÇA (RSVP) ============ -->
-  <section class="section" id="rsvp">
-    <div class="container">
       <div class="content-narrow reveal" style="text-align:center;">
-        <img src="assets/icones/rsvp.png" alt="" aria-hidden="true" class="rsvp-icon" />
-        <span class="eyebrow">Confirmação de presença</span>
-        <p class="lede" style="margin-top:16px;">Pedimos a gentileza de confirmarem sua presença aqui no site até o dia <strong>05/09/2026</strong>. A confirmação é indispensável para o controle da nossa lista de convidados na portaria. Contamos com vocês!</p>
+        <p class="lede">Por se tratar de pré-carnaval em Salvador, aconselhamos fazer reserva de hotel e passagens aéreas com antecedência. O trânsito pode estar modificado por conta das festas de pré-carnaval.</p>
       </div>
-      <div class="btn-row reveal" style="margin-top:var(--space-5);">
-        <a class="btn btn-primary" href="https://www.niusleneericardo.com.br/public/site/lista-convidados?id=348069" target="_blank" rel="noopener">Confirmar presença</a>
+      <!-- EDITAR: substituir foto, nome, descrição, telefone, whatsapp e link de cada hotel -->
+      <div class="hotel-grid">
+        <div class="hotel-card reveal">
+          <img src="assets/hospedagem/foto-01.jpg" alt="Hotel Fasano Salvador" class="hotel-card-img" />
+          <div class="hotel-card-body">
+            <p class="hotel-card-name">Hotel Fasano Salvador</p>
+            <p class="hotel-card-desc">Sofisticação e elegância com vista para a Baía de Todos os Santos.</p>
+            <div class="hotel-card-contact">
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 2201-6300</div>
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/fasano/" target="_blank" rel="noopener">@fasano</a></div>
+            </div>
+            <a class="btn btn-outline" href="https://fasano.com.br/hotel/fasano-salvador/" target="_blank" rel="noopener">Ir para o site</a>
+          </div>
+        </div>
+        <div class="hotel-card reveal">
+          <img src="assets/hospedagem/foto-02.jpg" alt="Fera Palace Hotel" class="hotel-card-img" />
+          <div class="hotel-card-body">
+            <p class="hotel-card-name">Fera Palace Hotel</p>
+            <p class="hotel-card-desc">No Centro Histórico, arquitetura, sofisticação e vista privilegiada.</p>
+            <div class="hotel-card-contact">
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 3036-9202</div>
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/ferapalacehotel/" target="_blank" rel="noopener">@ferapalacehotel</a></div>
+            </div>
+            <a class="btn btn-outline" href="https://ferahoteis.com/" target="_blank" rel="noopener">Ir para o site</a>
+          </div>
+        </div>
+        <div class="hotel-card reveal">
+          <img src="assets/hospedagem/foto-03.jpg" alt="Villa Bahia" class="hotel-card-img" />
+          <div class="hotel-card-body">
+            <p class="hotel-card-name">Villa Bahia</p>
+            <p class="hotel-card-desc">No Pelourinho, casarões históricos com charme e atmosfera intimista.</p>
+            <div class="hotel-card-contact">
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 3322-4271</div>
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/villabahia/" target="_blank" rel="noopener">@villabahia</a></div>
+            </div>
+            <a class="btn btn-outline" href="https://lavillabahia.com/" target="_blank" rel="noopener">Ir para o site</a>
+          </div>
+        </div>
+        <div class="hotel-card reveal">
+          <img src="assets/hospedagem/foto-04.jpg" alt="Aram Yamí Boutique Hotel" class="hotel-card-img" />
+          <div class="hotel-card-body">
+            <p class="hotel-card-name">Aram Yamí Boutique Hotel</p>
+            <p class="hotel-card-desc">Hotel boutique intimista com arquitetura histórica e vista para a baía.</p>
+            <div class="hotel-card-contact">
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 3242-9412</div>
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/aramyamihotel/" target="_blank" rel="noopener">@aramyamihotel</a></div>
+            </div>
+            <a class="btn btn-outline" href="https://www.aramyamihotel.com/" target="_blank" rel="noopener">Ir para o site</a>
+          </div>
+        </div>
+        <div class="hotel-card reveal">
+          <img src="assets/hospedagem/foto-05.jpg" alt="Hotel da Bahia by Wish" class="hotel-card-img" />
+          <div class="hotel-card-body">
+            <p class="hotel-card-name">Hotel da Bahia by Wish</p>
+            <p class="hotel-card-desc">Tradição, arte e conforto em localização privilegiada da cidade.</p>
+            <div class="hotel-card-contact">
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 3021-6700</div>
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span>Reservas:</span> 0800 600 8088</div>
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/hoteldabahia/" target="_blank" rel="noopener">@hoteldabahia</a></div>
+            </div>
+            <a class="btn btn-outline" href="https://www.grupowish.com/hotel-da-bahia-by-wish" target="_blank" rel="noopener">Ir para o site</a>
+          </div>
+        </div>
+        <div class="hotel-card reveal">
+          <img src="assets/hospedagem/foto-06.jpg" alt="Sol Victoria Marina" class="hotel-card-img" />
+          <div class="hotel-card-body">
+            <p class="hotel-card-name">Sol Victoria Marina</p>
+            <p class="hotel-card-desc">No Corredor da Vitória, vista privilegiada para a baía.</p>
+            <div class="hotel-card-contact">
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 3418-2155</div>
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/solvictoriamarina/" target="_blank" rel="noopener">@solvictoriamarina</a></div>
+            </div>
+            <a class="btn btn-outline" href="https://www.solexpress.com.br/hoteis-e-resorts/sol-victoria-marina/" target="_blank" rel="noopener">Ir para o site</a>
+          </div>
+        </div>
+        <div class="hotel-card reveal">
+          <img src="assets/hospedagem/foto-07.jpg" alt="Mercure Salvador Rio Vermelho" class="hotel-card-img" />
+          <div class="hotel-card-body">
+            <p class="hotel-card-name">Mercure Salvador Rio Vermelho</p>
+            <p class="hotel-card-desc">À beira-mar no Rio Vermelho, conforto e vista para o mar.</p>
+            <div class="hotel-card-contact">
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 3172-9200</div>
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/mercureriovermelho/" target="_blank" rel="noopener">@mercureriovermelho</a></div>
+            </div>
+            <a class="btn btn-outline" href="https://all.accor.com/hotel/5182/index.pt-br.shtml" target="_blank" rel="noopener">Ir para o site</a>
+          </div>
+        </div>
+        <div class="hotel-card reveal">
+          <img src="assets/hospedagem/foto-08.jpg" alt="ibis Salvador Rio Vermelho" class="hotel-card-img" />
+          <div class="hotel-card-body">
+            <p class="hotel-card-name">ibis Salvador Rio Vermelho</p>
+            <p class="hotel-card-desc">No Rio Vermelho, hospedagem prática e confortável perto da orla.</p>
+            <div class="hotel-card-contact">
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (71) 3172-4100</div>
+              <div class="contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <a href="https://www.instagram.com/ibis.br/" target="_blank" rel="noopener">@ibis.br</a></div>
+            </div>
+            <a class="btn btn-outline" href="https://all.accor.com/hotel/5173/index.pt-br.shtml" target="_blank" rel="noopener">Ir para o site</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DICAS ============ -->
+  <section class="section" id="dicas">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Dicas</span>
+        <h2 class="h2">Dicas para o grande dia</h2>
+      </div>
+
+      <div class="tips-tabs reveal">
+        <div class="tips-tab-nav" role="tablist" aria-label="Categorias de dicas">
+          <button type="button" class="tips-tab-btn is-active" role="tab" aria-selected="true" data-tab="museus">Museus</button>
+          <button type="button" class="tips-tab-btn" role="tab" aria-selected="false" data-tab="restaurantes">Restaurantes</button>
+          <button type="button" class="tips-tab-btn" role="tab" aria-selected="false" data-tab="praias">Praias</button>
+          <button type="button" class="tips-tab-btn" role="tab" aria-selected="false" data-tab="passeios">Passeios</button>
+        </div>
+
+        <div class="tips-tab-panel is-active" id="tab-museus" role="tabpanel">
+          <ul class="tips-list">
+            <li>MUNCAB – Museu Nacional da Cultura Afro-Brasileira</li>
+            <li>Cidade da Música da Bahia</li>
+            <li>MAM-BA – Museu de Arte Moderna da Bahia</li>
+            <li>Casa do Carnaval da Bahia</li>
+            <li>Fundação Casa de Jorge Amado</li>
+            <li>Museu da Cidade</li>
+          </ul>
+        </div>
+
+        <div class="tips-tab-panel" id="tab-restaurantes" role="tabpanel">
+          <ul class="tips-list">
+            <li>Casa de Tereza</li>
+            <li>Boteco do França – sugestão: Arroz de Polvo</li>
+            <li>Acarajé da Dinha</li>
+            <li>Acarajé da Cira</li>
+            <li>Restaurante da Preta – Palacete Tirachapéu</li>
+            <li>PALA 7 – Palacete Tirachapéu</li>
+            <li>Origem</li>
+            <li>Soho</li>
+            <li>Chez Bernard</li>
+            <li>Mistura</li>
+            <li>Companhia da Pizza</li>
+          </ul>
+        </div>
+
+        <div class="tips-tab-panel" id="tab-praias" role="tabpanel">
+          <ul class="tips-list">
+            <li>Porto da Barra</li>
+            <li>Praia da Gamboa – mar geralmente mais tranquilo</li>
+            <li>Praia do Buracão</li>
+            <li>Praia do Flamengo – Barraca do Lôro e Pipa Beach Club</li>
+            <li>Stella Maris – Barraca do Lôro</li>
+          </ul>
+        </div>
+
+        <div class="tips-tab-panel" id="tab-passeios" role="tabpanel">
+          <ul class="tips-list">
+            <li>Praia do Forte</li>
+            <li>Itacimirim</li>
+            <li>Centro Histórico de Salvador</li>
+            <li>Ponta do Humaitá</li>
+            <li>Basílica do Senhor do Bonfim</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -1177,133 +1584,6 @@
     </div>
   </section>
 
-  <!-- ============ DRESS CODE ============ -->
-  <section class="section" id="traje">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Traje</span>
-        <h2 class="h2">Dress Code</h2>
-      </div>
-
-      <div class="info-grid">
-        <div class="info-block reveal">
-          <img src="assets/geral/traje-mulher.png" alt="Ilustração de traje sugerido para as mulheres" class="dc-illus" loading="lazy" />
-          <span class="label">Para as mulheres</span>
-          <p><strong>O que vestir:</strong> Vestidos longos ou midi, com modelagens elegantes e adequadas à ocasião.</p>
-          <p><strong>Cores sugeridas:</strong> Tons de rosa, lilás, amarelo, coral, terracota, fúcsia, champanhe ou estampas florais delicadas.</p>
-          <p><strong>Avisos importantes:</strong> Pedimos a gentileza de <em>evitar todos os tons de azul e verde</em>, pois serão cores estritamente reservadas à composição das mães no altar. Como de costume, o branco e o off-white são exclusivos da noiva.</p>
-        </div>
-
-        <div class="info-block reveal">
-          <img src="assets/geral/traje-homem.png" alt="Ilustração de traje sugerido para os homens" class="dc-illus" loading="lazy" />
-          <span class="label">Para os homens</span>
-          <p><strong>O que vestir:</strong> Seguindo o estilo esporte fino, sugerimos camisa social de manga longa combinada com calça social ou de sarja. O uso de blazer ou paletó avulso é opcional. Para os pés, prefira sapato social, brogue ou mocassim.</p>
-          <p><strong>Cores sugeridas:</strong> Para a camisa, branco ou tons claros e pastéis, como azul-claro e cinza-claro. Para a calça ou blazer, cinza-grafite, marrom, vinho, marsala, cáqui escuro ou tons terrosos escuros como o café.</p>
-          <p><strong>Avisos importantes:</strong> A gravata é de uso exclusivo do noivo, pais e equipe celebrante. Pedimos que os convidados não usem blazers ou calças nas cores azul-marinho e areia fria, que são reservadas ao noivo e aos pais. Evite jeans, bermuda e tênis esportivo.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PRESENTES ============ -->
-  <section class="section section--alt" id="presentes">
-    <div class="container">
-      <div class="content-narrow gift-text reveal">
-        <div class="card-icon gift-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="3" y="9" width="18" height="12" rx="1"/>
-            <line x1="3" y1="13" x2="21" y2="13"/>
-            <line x1="12" y1="9" x2="12" y2="21"/>
-            <path d="M12 9C9 9 7.5 7.3 7.5 5.8 7.5 4.6 8.4 4 9.3 4c1.5 0 2.4 1.8 2.7 5z"/>
-            <path d="M12 9c3 0 4.5-1.7 4.5-3.2 0-1.2-.9-1.8-1.8-1.8-1.5 0-2.4 1.8-2.7 5z"/>
-          </svg>
-        </div>
-        <span class="eyebrow">Presentes</span>
-        <p class="lede" style="margin-top:16px;">Queridos amigos e familiares, estamos muito felizes em compartilhar esse grande dia com vocês!</p>
-        <p style="margin-top:var(--space-3);">Para aqueles que desejam nos abençoar nesta nova jornada, preparamos nossa lista de presentes virtual aqui no site. Cada contribuição será um apoio fundamental para nos ajudar a finalizar a mobília do nosso lar e a estruturar nossa nova vida de casados. Sua presença já é o nosso maior presente, mas caso queira nos mimar, preparamos tudo com muito&nbsp;carinho.</p>
-        <p style="margin-top:var(--space-3);">Desde já, agradecemos imensamente por todo o afeto e generosidade. Que Deus abençoe cada&nbsp;um&nbsp;de&nbsp;vocês!</p>
-      </div>
-      <div class="gift-cards">
-        <div class="gift-card reveal">
-          <div class="gift-card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-              <rect x="3" y="9" width="18" height="12" rx="1"/>
-              <line x1="3" y1="13" x2="21" y2="13"/>
-              <line x1="12" y1="9" x2="12" y2="21"/>
-              <path d="M12 9C9 9 7.5 7.3 7.5 5.8 7.5 4.6 8.4 4 9.3 4c1.5 0 2.4 1.8 2.7 5z"/>
-              <path d="M12 9c3 0 4.5-1.7 4.5-3.2 0-1.2-.9-1.8-1.8-1.8-1.5 0-2.4 1.8-2.7 5z"/>
-            </svg>
-          </div>
-          <h3 class="h3">Lista de Casamento</h3>
-          <p>Escolha um presente especial em nossa lista.</p>
-          <div class="gift-card-foot">
-            <a class="btn btn-outline" href="https://www.niusleneericardo.com.br/public/site/lista-presentes?id=348069" target="_blank" rel="noopener">
-              Ver lista
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="gift-card reveal">
-          <div class="gift-card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-              <rect x="2.5" y="5.5" width="19" height="13" rx="2"/>
-              <line x1="2.5" y1="10" x2="21.5" y2="10"/>
-              <line x1="6" y1="14.5" x2="10" y2="14.5"/>
-            </svg>
-          </div>
-          <h3 class="h3">Conta Bancária</h3>
-          <p>PIX ou transferência bancária para nos ajudar a realizar nossos sonhos</p>
-          <!-- EDITAR: substituir pelos dados bancários / chave Pix reais -->
-          <div class="gift-bank">
-            <p><span>Banco:</span> Itaú</p>
-            <p><span>Agência:</span> 0001</p>
-            <p><span>Conta:</span> 12345-6</p>
-            <p><span>PIX:</span> casamento@ricardoeniulsene.com</p>
-          </div>
-        </div>
-
-      </div>
-
-      <p class="gift-closing reveal">Agradecemos de coração por fazer parte deste momento especial!</p>
-    </div>
-  </section>
-
-  <!-- ============ INFORMAÇÕES IMPORTANTES ============ -->
-  <section class="section" id="informacoes">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Para os convidados</span>
-        <h2 class="h2">Informações Importantes</h2>
-      </div>
-
-      <div class="info-grid info-grid--three">
-        <div class="info-block reveal">
-          <img src="assets/icones/sem-celular.png" alt="" aria-hidden="true" class="info-icon" />
-          <span class="label">Uso de celulares</span>
-          <h3 class="h3">Cerimônia Desconectada</h3>
-          <p>Queremos ver o rosto e o sorriso de cada um de vocês em nossas fotos oficiais! Por isso, o momento da nossa cerimônia será totalmente desconectado. Pedimos a gentileza de guardarem os celulares e câmeras durante a celebração.</p>
-          <p>Temos uma equipe de profissionais registrando cada segundo e, logo após o término, na festa, o uso dos celulares está totalmente liberado para vocês registrarem e comemorarem muito conosco! Aproveitem esse momento com o coração presente.</p>
-        </div>
-
-        <div class="info-block reveal">
-          <img src="assets/icones/criancas.png" alt="" aria-hidden="true" class="info-icon" />
-          <span class="label">Aos pais</span>
-          <h3 class="h3">Sobre as Crianças</h3>
-          <p>Amamos a energia e a alegria dos pequenos! Como o local conta com equipamentos técnicos, câmeras em movimento e decorações delicadas, pedimos o apoio especial dos pais para manterem as crianças por perto e sob supervisão durante o evento, garantindo a segurança de todos.</p>
-        </div>
-
-        <div class="info-block reveal">
-          <img src="assets/icones/doces.png" alt="" aria-hidden="true" class="info-icon" />
-          <span class="label">Doces</span>
-          <h3 class="h3">Mesa de Doces e Bem-Casados</h3>
-          <p>Pensando no conforto de todos e para evitar filas, o serviço será iniciado de forma contínua durante a festa.</p>
-          <p>Nossa equipe de buffet estará à disposição para ajudar você a escolher suas opções favoritas e embalá-las com todo carinho.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
 
 </main>
 
@@ -1326,8 +1606,8 @@
 <footer class="site-footer">
   <div class="container">
     <img src="assets/geral/monograma.png" alt="" aria-hidden="true" class="footer-monograma" />
-    <img src="assets/geral/assinatura.png" alt="Niuslene e Ricardo" class="footer-assinatura" />
-    <p class="footer-date">26 de setembro de 2026</p>
+    <span class="footer-assinatura-text">Thais e Kenneth</span>
+    <p class="footer-date">30 de janeiro de 2027</p>
     <p class="footer-message">Com carinho, esperamos vocês para celebrar este dia conosco.</p>
     <a href="#home" class="back-to-top">
       Voltar ao topo
@@ -1421,29 +1701,87 @@
     reveals.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ---------- Countdown ---------- */
-  var weddingDate = new Date('2026-09-26T15:30:00-03:00').getTime();
-  var cdDays = document.getElementById('cd-days');
-  var cdHours = document.getElementById('cd-hours');
-  var cdMinutes = document.getElementById('cd-minutes');
-  var cdSeconds = document.getElementById('cd-seconds');
+  /* ---------- Linha do tempo ---------- */
+  var tlTrack = document.querySelector('.tl-track');
+  var tlLine = document.querySelector('.tl-line');
+  var tlFill = document.getElementById('tl-fill');
+  var tlPlane = document.getElementById('tl-plane');
+  var tlItems = document.querySelectorAll('.tl-item');
+  var tlDots = document.querySelectorAll('.tl-dot');
 
-  function pad(n) { return n < 10 ? '0' + n : String(n); }
-
-  function updateCountdown() {
-    var diff = weddingDate - Date.now();
-    if (diff < 0) diff = 0;
-    var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    var minutes = Math.floor((diff / (1000 * 60)) % 60);
-    var seconds = Math.floor((diff / 1000) % 60);
-    cdDays.textContent = pad(days);
-    cdHours.textContent = pad(hours);
-    cdMinutes.textContent = pad(minutes);
-    cdSeconds.textContent = pad(seconds);
+  if (tlTrack && tlFill) {
+    var tlTicking = false;
+    var tlMaxPx = 0;
+    var tlLastDot = tlDots.length ? tlDots[tlDots.length - 1] : null;
+    var updateTlFill = function () {
+      tlTicking = false;
+      var rect = tlTrack.getBoundingClientRect();
+      var lineHeight = tlLastDot
+        ? (tlLastDot.getBoundingClientRect().top - rect.top + tlLastDot.offsetHeight / 2)
+        : rect.height;
+      if (tlLine) tlLine.style.height = lineHeight + 'px';
+      var vh = window.innerHeight;
+      var total = rect.height + vh * 0.5;
+      var scrolled = vh * 0.7 - rect.top;
+      var pct = Math.max(0, Math.min(1, scrolled / total));
+      var pctPx = Math.min(pct * rect.height, lineHeight);
+      if (pctPx > tlMaxPx) tlMaxPx = pctPx;
+      tlFill.style.height = tlMaxPx + 'px';
+      if (tlPlane) tlPlane.style.top = tlMaxPx + 'px';
+      tlDots.forEach(function (dot) {
+        var dotTop = dot.getBoundingClientRect().top - rect.top + dot.offsetHeight / 2;
+        if (tlMaxPx >= dotTop) {
+          dot.classList.add('is-passed');
+        }
+      });
+    };
+    var requestTlUpdate = function () {
+      if (!tlTicking) {
+        tlTicking = true;
+        window.requestAnimationFrame(updateTlFill);
+      }
+    };
+    updateTlFill();
+    window.addEventListener('scroll', requestTlUpdate, { passive: true });
+    window.addEventListener('resize', requestTlUpdate);
+    window.addEventListener('load', updateTlFill);
+    window.addEventListener('pageshow', updateTlFill);
   }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+
+  if (tlItems.length) {
+    if ('IntersectionObserver' in window) {
+      var tlIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            tlIo.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.35 });
+      tlItems.forEach(function (el) { tlIo.observe(el); });
+    } else {
+      tlItems.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+  }
+
+  /* ---------- Dicas tabs ---------- */
+  var tipsTabBtns = document.querySelectorAll('.tips-tab-btn');
+  tipsTabBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = btn.getAttribute('data-tab');
+      document.querySelectorAll('.tips-tab-btn').forEach(function (b) {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.tips-tab-panel').forEach(function (p) {
+        p.classList.remove('is-active');
+      });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
+      document.getElementById('tab-' + target).classList.add('is-active');
+    });
+  });
+
 
   /* ---------- Gallery + Lightbox ---------- */
   var defaultGallery = [
@@ -1545,3 +1883,5 @@
 </script>
 </body>
 </html>
+
+
