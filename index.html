@@ -454,7 +454,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(ellipse at 50% 32%, #fffdf8 0%, var(--color-off-white) 68%);
+    background: radial-gradient(ellipse at 50% 32%, rgba(255,253,248,0.35) 0%, rgba(250,246,238,0.45) 68%), url('assets/geral/foto-capa.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--color-ink);
     text-align: center;
     overflow: hidden;
@@ -934,6 +937,8 @@
   }
   .gift-icon { width: 52px; height: 52px; margin-bottom: var(--space-3); }
   .rsvp-icon { width: 60px; height: 60px; object-fit: contain; margin: 0 auto var(--space-3); }
+  .rsvp-btn-img { content: url('assets/geral/botão01.png'); transition: opacity 0.2s ease; }
+  .rsvp-btn-link:hover .rsvp-btn-img { content: url('assets/geral/botao02.png'); }
 
   .gift-cards {
     display: grid;
@@ -1280,7 +1285,7 @@
      FOOTER
      ============================================================ */
   .site-footer {
-    background: var(--color-white);
+    background: var(--color-off-white);
     border-top: 1px solid var(--color-line);
     padding: var(--space-6) 0 var(--space-4);
     text-align: center;
@@ -1413,6 +1418,7 @@
         <li><a href="#local">Local</a></li>
         <li><a href="#hospedagem">Hospedagem</a></li>
         <li><a href="#galeria">Fotos</a></li>
+        <li><a href="#confirmar-presenca">Confirmar Presença</a></li>
         <li><a href="#dicas">Dicas</a></li>
       </ul>
     </nav>
@@ -1434,6 +1440,7 @@
     <li><a href="#local">Local</a></li>
     <li><a href="#hospedagem">Hospedagem</a></li>
     <li><a href="#galeria">Fotos</a></li>
+    <li><a href="#confirmar-presenca">Confirmar Presença</a></li>
     <li><a href="#dicas">Dicas</a></li>
   </ul>
 </div>
@@ -1642,8 +1649,27 @@
     </div>
   </section>
 
+  <!-- ============ CONFIRMAR PRESENÇA ============ -->
+  <section class="section section--alt" id="confirmar-presenca" style="background-color: var(--color-off-white); position: relative; overflow: hidden;">
+    <div style="position:absolute; inset:0; background-image: url('assets/geral/ponte-bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.08; pointer-events: none;"></div>
+    <div style="position:absolute; inset:0; background-image: url('assets/geral/estampa.png'); background-size: 420px 420px; background-repeat: repeat; opacity: 0.07; pointer-events: none;"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <div class="section-head reveal">
+        <img src="assets/icones/rsvp.png" alt="" class="rsvp-icon" style="width:90px; height:auto; margin:0 auto var(--space-2);" />
+        <span class="eyebrow">RSVP</span>
+        <h2 class="h2">Confirmar Presença</h2>
+        <p class="lede">Sua presença é muito importante para nós. Por favor, confirme até a data indicada para que possamos organizar tudo com carinho.</p>
+      </div>
+      <div style="text-align:center;">
+        <a href="#" target="_blank" rel="noopener" class="rsvp-btn-link" style="display:inline-block;">
+          <img src="assets/geral/botão01.png" alt="Confirmar Presença" class="rsvp-btn-img" style="width:306px; max-width:80vw; height:auto;" />
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ DICAS ============ -->
-  <section class="section section--alt" id="dicas" style="background-color: var(--color-off-white);">
+  <section class="section section--alt" id="dicas" style="background-color: var(--color-white);">
     <div class="container">
       <div class="section-head reveal">
         <img src="assets/geral/elementos/elemento-06.png" alt="" style="width:90px; height:auto; margin:0 auto var(--space-2);" />
@@ -1923,7 +1949,6 @@
   <div class="container">
     <img src="assets/geral/monograma.png" alt="" aria-hidden="true" class="footer-monograma" />
     <span class="footer-assinatura-text">Thais e Kenneth</span>
-    <p class="footer-message">Com carinho, esperamos vocês!</p>
     <a href="#home" class="back-to-top">
       Voltar ao topo
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="20" x2="12" y2="4"/><polyline points="6 10 12 4 18 10"/></svg>
